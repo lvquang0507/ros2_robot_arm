@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tx200">
+    <gazebo reference="world">
+        <static>true</static>
+    </gazebo>
+    <gazebo reference="robot_base_link">
+        <material>
+            Gazebo/Orange
+        </material>
+    </gazebo>
+    <gazebo reference="shoulder_link">
+        <material>
+            Gazebo/Orange
+        </material>
+    </gazebo>
+    <gazebo reference="arm_link">
+        <material>
+            Gazebo/Orange
+        </material>
+    </gazebo>
+    <gazebo reference="elbow_link">
+        <material>
+            Gazebo/Orange
+        </material>
+    </gazebo>
+    <gazebo reference="forearm_link">
+        <material>
+            Gazebo/Orange
+        </material>
+    </gazebo>
+    <gazebo reference="wrist_link">
+        <material>
+            Gazebo/Orange
+        </material>
+    </gazebo>
+</robot>

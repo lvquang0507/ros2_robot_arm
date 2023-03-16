@@ -1,245 +1,339 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<robot xmlns:xacro="http://wiki.ros.org/xacro">
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tx200">
+  <link name="world"></link>
+  <link
+    name="robot_base_link">
+    <inertial>
+      <origin
+        xyz="0.00026066 0.00094721 0.16721"
+        rpy="0 0 0" />
+      <mass
+        value="63.755" />
+      <inertia
+        ixx="1.6712"
+        ixy="-0.0046856"
+        ixz="-4.7419E-05"
+        iyy="1.6412"
+        iyz="-0.015828"
+        izz="2.0916" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/visual/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.50196 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/collision/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="shoulder_link">
+    <inertial>
+      <origin
+        xyz="0.14856 -0.013564 0.25306"
+        rpy="0 0 0" />
+      <mass
+        value="154.38" />
+      <inertia
+        ixx="5.8791"
+        ixy="0.005498"
+        ixz="-0.62699"
+        iyy="8.2707"
+        iyz="-0.09633"
+        izz="8.1731" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/visual/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.50196 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/collision/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
 
-  <xacro:include filename="$(find robot-arm)/urdf/common.xacro" />
-
-  <xacro:macro name="tx200" params="prefix parent *origin">
-    <!-- LINKS -->
-    <!-- base link -->
-    <link name="${prefix}base_link">
-      <!-- Default inertial for Gazebo/Ingnition - copy and edit block from 'common.xacro'
-           to get more realistic behaviour-->
-      <xacro:default_inertial/>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.3" radius="0.3" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/visual/base_link.dae" /> -->
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.3" radius="0.3" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/collision/base_link.stl" /> -->
-        </geometry>
-      </collision>
-    </link>
-    <!-- link 1 -->
-    <link name="${prefix}link1">
-      <!-- Default inertial for Gazebo/Ingnition - copy and edit block from 'common.xacro'
-           to get more realistic behaviour-->
-      <xacro:default_inertial/>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.3" radius="0.15" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/visual/link1.dae" /> -->
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.3" radius="0.15" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/collision/link1.stl" /> -->
-        </geometry>
-      </collision>
-    </link>
-    <!-- link 2 -->
-    <link name="${prefix}link2">
-      <!-- Default inertial for Gazebo/Ingnition - copy and edit block from 'common.xacro'
-           to get more realistic behaviour-->
-      <xacro:default_inertial/>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.8" radius="0.15" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/visual/link2.dae" /> -->
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.8" radius="0.15" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/collision/link2.stl"  /> -->
-        </geometry>
-      </collision>
-    </link>
-    <!-- link 3 -->
-    <link name="${prefix}link3">
-      <!-- Default inertial for Gazebo/Ingnition - copy and edit block from 'common.xacro'
-           to get more realistic behaviour-->
-      <xacro:default_inertial/>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.5" radius="0.10" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/visual/link3.dae" /> -->
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.5" radius="0.10" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/collision/link3.stl"  /> -->
-        </geometry>
-      </collision>
-    </link>
-    <!-- link 4 -->
-    <link name="${prefix}link4">
-      <!-- Default inertial for Gazebo/Ingnition - copy and edit block from 'common.xacro'
-           to get more realistic behaviour-->
-      <xacro:default_inertial/>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.1" radius="0.2" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/visual/link4.dae" /> -->
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.1" radius="0.2" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/collision/link4.stl"  /> -->
-        </geometry>
-      </collision>
-    </link>
-    <!-- link 5 -->
-    <link name="${prefix}link5">
-      <!-- Default inertial for Gazebo/Ingnition - copy and edit block from 'common.xacro'
-           to get more realistic behaviour-->
-      <xacro:default_inertial/>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.2" radius="0.1" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/visual/link5.dae" /> -->
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.2" radius="0.1" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/collision/link5.stl" /> -->
-        </geometry>
-      </collision>
-    </link>
-    <!-- link 6 -->
-    <link name="${prefix}link6">
-      <!-- Default inertial for Gazebo/Ingnition - copy and edit block from 'common.xacro'
-           to get more realistic behaviour-->
-      <xacro:default_inertial/>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.05" radius="0.1" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/visual/link6.dae" /> -->
-        </geometry>
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        <geometry>
-          <cylinder length="0.05" radius="0.1" />
-<!--           <mesh filename="package://robot-arm/meshes/tx200/collision/link6.stl" /> -->
-        </geometry>
-      </collision>
-    </link>
-
-    <!-- All-zero tool frame. This frame should correspond to the TOOL frame of the robot's controller.) -->
-    <link name="${prefix}tool0" />
-    <!-- tool link -->
-
-<!-- START Delete if not needed -->
-    <!-- Standard frames for industrial robots. Also useful for manipulators.
-         (ROS-I specs - https://wiki.ros.org/Industrial/Tutorials/WorkingWithRosIndustrialRobotSupportPackages#Standardised_links_.2F_frames)-->
-    <!-- This frame should correspond to the BASE coordinate system of robot's controller.) -->
-    <link name="${prefix}base" />
-    <!-- Frame for mounting EEF models to a manipulator. x+ axis points forward (REP 103). -->
-    <link name="${prefix}flange" />
-<!-- END Delete if not needed  -->
-    <!-- END LINKS -->
-
-    <!-- JOINTS -->
-    <!-- base_joint fixes base_link to the environment -->
-    <joint name="${prefix}base_joint" type="fixed">
-      <xacro:insert_block name="origin" />
-      <parent link="${parent}" />
-      <child link="${prefix}base_link" />
-    </joint>
-    <!-- joint 1 -->
-    <joint name="${prefix}joint1" type="revolute">
-      <origin xyz="0 0 0.3" rpy="${pi} 0 0" />
-      <parent link="${prefix}base_link" />
-      <child link="${prefix}link1" />
-      <axis xyz="0 0 1" />
-      <limit effort="0" lower="${radians(-180)}" upper="${radians(180)}" velocity="${radians(180)}" />
-    </joint>
-    <!-- joint 2 -->
-    <joint name="${prefix}joint2" type="revolute">
-      <origin xyz="0 0 0.3" rpy="${pi/2} 0 0" />
-      <parent link="${prefix}link1" />
-      <child link="${prefix}link2" />
-      <axis xyz="0 0 1" />
-      <limit effort="0" lower="${radians(-180)}" upper="${radians(180)}" velocity="${radians(180)}" />
-    </joint>
-    <!-- joint 3 -->
-    <joint name="${prefix}joint3" type="revolute">
-      <origin xyz="0.8 0 0" rpy="0 0 0" />
-      <parent link="${prefix}link2" />
-      <child link="${prefix}link3" />
-      <axis xyz="0 0 1" />
-      <limit effort="0" lower="${radians(-90)}" upper="${radians(180)}" velocity="${radians(270)}" />
-    </joint>
-    <!-- joint 4 -->
-    <joint name="${prefix}joint4" type="revolute">
-      <origin xyz="0 0.1 0" rpy="0 ${-pi/2} 0" />
-      <parent link="${prefix}link3" />
-      <child link="${prefix}link4" />
-      <axis xyz="0 0 1" />
-      <limit effort="0" lower="${radians(-360)}" upper="${radians(360)}" velocity="${radians(360)}" />
-    </joint>
-    <!-- joint 5 -->
-    <joint name="${prefix}joint5" type="revolute">
-      <origin xyz="0 0 -0.1" rpy="0 ${pi/2} 0" />
-      <parent link="${prefix}link4" />
-      <child link="${prefix}link5" />
-      <axis xyz="0 0 1" />
-      <limit effort="0" lower="${radians(-120)}" upper="${radians(120)}" velocity="${radians(540)}" />
-    </joint>
-    <!-- joint 6 -->
-    <joint name="${prefix}joint6" type="revolute">
-      <origin xyz="0 0 0.1" rpy="0 ${-pi/2} 0" />
-      <parent link="${prefix}link5" />
-      <child link="${prefix}link6" />
-      <axis xyz="0 0 1" />
-      <limit effort="0" lower="${radians(-360)}" upper="${radians(360)}" velocity="${radians(720)}" />
-    </joint>
-
-    <!-- tool frame - fixed frame -->
-    <joint name="${prefix}joint6-tool0" type="fixed">
-      <parent link="${prefix}link6" />
-      <child link="${prefix}tool0" />
-      <origin xyz="0 0 -0.115" rpy="0 ${-pi} ${-pi/2}" />
-    </joint>
-    <!-- END JOINTS -->
-
-<!-- START Delete if not needed -->
-    <!-- Standard frames for industrial robots. Also useful for manipulators.
-         (ROS-I specs - https://wiki.ros.org/Industrial/Tutorials/WorkingWithRosIndustrialRobotSupportPackages#Standardised_links_.2F_frames)-->
-    <joint name="${prefix}base_link-base_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="${prefix}base_link" />
-      <child link="${prefix}base" />
-    </joint>
-
-    <joint name="${prefix}tool0-flange_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="${prefix}tool0" />
-      <child link="${prefix}flange" />
-    </joint>
-<!-- END Delete if not needed  -->
-
-
-  </xacro:macro>
+  <joint name="world_to_robot_base" type="fixed">
+    <parent link="world" />
+    <child link="robot_base_link" />
+  </joint>
+  <joint
+    name="base_to_shoulder_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.347"
+      rpy="0 0 0" />
+    <parent
+      link="robot_base_link" />
+    <child
+      link="shoulder_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="${shoulder_joint_lower_limit}"
+      upper="${shoulder_joint_upper_limit}"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="arm_link">
+    <inertial>
+      <origin
+        xyz="0.0044408 0.33383 -0.15881"
+        rpy="0 0 0" />
+      <mass
+        value="120.7" />
+      <inertia
+        ixx="16.904"
+        ixy="-0.082464"
+        ixz="0.0042604"
+        iyy="2.2595"
+        iyz="0.19322"
+        izz="17.972" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/visual/arm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.50196 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/collision/arm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_to_arm_joint"
+    type="revolute">
+    <origin
+      xyz="0.25 0.239 0.301"
+      rpy="1.5708 0 0" />
+    <parent
+      link="shoulder_link" />
+    <child
+      link="arm_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="${arm_joint_lower_limit}"
+      upper="${arm_joint_upper_limit}"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="elbow_link">
+    <inertial>
+      <origin
+        xyz="-0.02969 -0.042696 -0.23138"
+        rpy="0 0 0" />
+      <mass
+        value="54.85" />
+      <inertia
+        ixx="1.5777"
+        ixy="-0.22458"
+        ixz="-0.060632"
+        iyy="1.2712"
+        iyz="-0.078975"
+        izz="1.2875" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/visual/elbow_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.50196 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/collision/elbow_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm_to_elbow_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0013914 0.95009 -0.04995"
+      rpy="${pi} 0 ${pi/2}" />
+    <parent
+      link="arm_link" />
+    <child
+      link="elbow_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="${elbow_joint_lower_limit}"
+      upper="${elbow_joint_upper_limit}"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="forearm_link">
+    <inertial>
+      <origin
+        xyz="0.0051041 0.0017748 0.3241"
+        rpy="0 0 0" />
+      <mass
+        value="32.604" />
+      <inertia
+        ixx="9.7"
+        ixy="0.00055231"
+        ixz="-0.03"
+        iyy="9.57"
+        iyz="0.14"
+        izz="0.3536" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/visual/forearm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.50196 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/collision/forearm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="elbow_to_forearm_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.17799 -0.2758"
+      rpy="${-pi/2} ${-pi/2} 0" />
+    <parent
+      link="elbow_link" />
+    <child
+      link="forearm_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="${forearm_joint_lower_limit}"
+      upper="${forearm_joint_upper_limit}"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wrist_link">
+    <inertial>
+      <origin
+        xyz="0.049261 2.4716E-05 -0.0025318"
+        rpy="0 0 0" />
+      <mass
+        value="5.3091" />
+      <inertia
+        ixx="0.05"
+        ixy="-6.8698E-06"
+        ixz="0.00015324"
+        iyy="0.02"
+        iyz="3.9383E-06"
+        izz="0.05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/visual/wrist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.50196 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot-arm/meshes/tx200/collision/wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="forearm_to_wrist_joint"
+    type="revolute">
+    <origin
+      xyz="-0.00375 -8.7479E-05 0.62225"
+      rpy="${pi} ${-pi/2} 0" />
+    <parent
+      link="forearm_link" />
+    <child
+      link="wrist_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="${wrist_joint_lower_limit}"
+      upper="${wrist_joint_upper_limit}"
+      effort="0"
+      velocity="0" />
+  </joint>
 </robot>
